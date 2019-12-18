@@ -1,3 +1,11 @@
+<!--
+ * @描述: 
+ * @版本: V1_0_0
+ * @作者: LiWanglin
+ * @创建时间: Do not edit
+ * @最后编辑人: LiWanglin
+ * @最后编辑时间: Do not Edit
+ -->
 # OpenCV-Python 开发手册
 ## 简介
 ### OpenCV 简介
@@ -26,14 +34,14 @@
 
 ## 入门篇
 ### 构造 OpenCV-Pyhton 开发环境
-#### 1. 下载并安装Anaconda  
+#### 1. 安装Anaconda  
 Anaconda指的是一个开源的 Python 发行版本，其包含了conda、Python 等180多个科学包及其依赖项。通过安装 Anaconda ，能够大量减少配置Python环境的时间，减少许多不必要的麻烦。  
 - 下载 Anaconda   
 进入Anaconda官方网站 <https://www.anaconda.com/distribution> 下载相对的版本。  
 ![avatar](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/anaconda.png)  
 选择 Python3.7 , 64 位版下载。  
 
-- 安装 Anaconda
+- 安装 Anaconda  
 在 Anaconda 的安装过程中，一般都是点击下一步就可以了。但有个地方要注意：
 ![安装Anaconda](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/install_anaconda.png)    
 画红圈的地方要勾选，将 Anaconda 添加到环境变量。
@@ -67,6 +75,26 @@ custom_channels:
 ![Python-version2](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/python-version2.png
 )  
 从图中可以看到，当前python版本为3.6.9。
+
+#### 2. 安装OpenCV-Python
+- 下载 OpenCV-Python  
+进入网站：<https://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv> ，选择 opencv_python-4.1.2+contrib-cp36-cp36m-win_amd64.whl 文件开始下载。
+![OpenCV-python](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/OpenCV-Python.png)  
+- 安装OpenCV-Python  
+下载完成后，在cmd输入：pip install + opencv_python-4.1.2+contrib-cp36-cp36m-win_amd64.whl 文件的绝对路径
+![OpenCV-python2](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/OpenCV-Python2.png)  
+如果出现：Successfully installed opencv-python-4.1.2+contrib，则表示安装成功。
+
+- 版本验证  
+进入 ipython ，输入：
+```python
+>>> import cv2 
+>>> cv2.__version__
+```
+可以查看 OpenCV-Python 版本
+![OpenCV-python3](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/OpenCV-Python3.png)  
+从图中可以看出，当前 OpenCV-Python 版本为4.1.2.
+
 
 ## 进阶篇
 
