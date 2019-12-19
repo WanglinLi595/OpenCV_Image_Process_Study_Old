@@ -138,7 +138,7 @@ print("image = \n" , image)                        #
 从图中我们可以看出 cv2.imread() 的返回值为 numpy.ndarray 类型。  
 
 - 注意：  
-
+如果图片的路径错误，不会有任何的错误输出，只是返回值为None。
 
 
 **(3) 显示图片**   
