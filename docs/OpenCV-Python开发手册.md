@@ -9,7 +9,7 @@
 # OpenCV-Python 开发手册
 ## 简介
 ### OpenCV 简介
-- OpenCV（开源计算机视觉库：<http://opencv.org>）是BSD许可的开源库，由加里·布拉德斯基 (Gray Bradsky) 于 1999 年创立，第一版于2000年问世。它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，可以运行在Linux、Windows和Mac OS操作系统上，同时又提供了Python、Ruby、MATLAB等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。
+- OpenCV（开源计算机视觉库：<http://opencv.org>）是BSD许可的开源库，由加里·布拉德斯基 (Gray Bradsky) 于 1999 年创立，第一版于2000年问世。它轻量级而且高效——由一系列 C 函数和少量 C++ 类构成，可以运行在 Linux、Windows 和 Mac OS 操作系统上，同时又提供了 Python、Ruby、MATLAB 等语言的接口，实现了图像处理和计算机视觉方面的很多通用算法。
 最新版本是 4.1.2 ，2019 年 10 月发布。
 
 - OpenCV目前的应用领域
@@ -34,7 +34,7 @@
 
 ## 入门篇
 ### 构造 OpenCV-Pyhton 开发环境
-#### 1. 安装Anaconda  
+**(1) 安装Anaconda**  
 Anaconda指的是一个开源的 Python 发行版本，其包含了conda、Python 等180多个科学包及其依赖项。通过安装 Anaconda ，能够大量减少配置Python环境的时间，减少许多不必要的麻烦。  
 - 下载 Anaconda   
 进入Anaconda官方网站 <https://www.anaconda.com/distribution> 下载相对的版本。  
@@ -76,10 +76,11 @@ custom_channels:
 )  
 从图中可以看到，当前python版本为3.6.9。
 
-#### 2. 安装OpenCV-Python
+**(2) 安装OpenCV-Python** 
 - 下载 OpenCV-Python  
 进入网站：<https://www.lfd.uci.edu/~gohlke/pythonlibs/#opencv> ，选择 opencv_python-4.1.2+contrib-cp36-cp36m-win_amd64.whl 文件开始下载。
 ![OpenCV-python](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/OpenCV-Python.png)  
+
 - 安装OpenCV-Python  
 下载完成后，在cmd输入：pip install + opencv_python-4.1.2+contrib-cp36-cp36m-win_amd64.whl 文件的绝对路径
 ![OpenCV-python2](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/OpenCV-Python2.png)  
@@ -88,12 +89,60 @@ custom_channels:
 - 版本验证  
 进入 ipython ，输入：
 ```python
->>> import cv2 
->>> cv2.__version__
+  >>> import cv2 
+  >>> cv2.__version__
 ```
-可以查看 OpenCV-Python 版本
+可以查看 OpenCV-Python 版本  
 ![OpenCV-python3](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/OpenCV-Python3.png)  
-从图中可以看出，当前 OpenCV-Python 版本为4.1.2.
+从图中可以看出，当前 OpenCV-Python 版本为4.1.2.  
+
+**(3) 执行一个简单的Opencv程序**  
+代码如下：(test_1_demo.py)
+```python
+import cv2      # 导入Opencv模块
+
+image = cv2.imread("../pic/lenacolor.png", cv2.IMREAD_UNCHANGED)  # 读取图片
+cv2.imshow("Demo1", image)                # 创建窗口，显示图片
+cv2.waitKey(0)                            # 等待用户按下按键
+cv2.destroyAllWindows()                   # 释放所有窗口
+```
+运行结果：    
+![test_1_demo.py运行结果](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/test_1_demo.py.png)
+
+### 图像入门
+**(1) 目标**
+  - 学习如何读取图片，显示图片，保存图片
+  - 学习函数：cv.imread(), cv.imshow() , cv.imwrite()
+  - 在Matplotlib中显示图片
+  
+**(2) 读取图片**
+- 使用函数 cv.imread() 读取图像。该图像应位于工作目录中，或者应提供完整的图像路径。
+
+- 第二个参数是一个标志，用于指定应读取图像的方式.  
+  
+| 读取标志 |含义 | 数值 |  
+|:----:|:----:|:----:|
+|cv.IMREAD_COLOR|加载彩色图像。图像的透明度将被忽略。这是默认标志.|1|
+|cv.IMREAD_GRAYSCALE :|以灰度模式加载图片|0|
+|cv.IMREAD_UNCHANGED |保持原格式不变|-1|
+
+- 演示代码：(test_2_imread.py)
+```python
+import cv2   
+image = cv2.imread("../pic/lena512.bmp", cv2.IMREAD_UNCHANGED)     # 读取图片
+print("image的类型为：" , type(image))              # 打印图片类型
+print("image = \n" , image)                        # 打印图片数据
+```  
+运行结果：  
+![test_2_imread.py运行结果](https://raw.githubusercontent.com/WanglinLi595/Save_Markdown_Picture/master/OpenCV-Python%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C/test_2_imread.py.png)  
+从图中我们可以看出 cv2.imread() 的返回值为 numpy.ndarray 类型。  
+
+- 注意：  
+
+
+
+**(3) 显示图片**   
+使用函数 cv.imshow() 在窗口中显示图像。窗口会自动适合图像尺寸。
 
 
 ## 进阶篇
