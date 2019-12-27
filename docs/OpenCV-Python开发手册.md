@@ -370,8 +370,27 @@ cv.destroyAllWindows()  # 摧毁窗口
 (4) 画矩形框
 
 - 要绘制矩形，你需要矩形确定左上角和右下角的坐标  
-- 代码演示：
+- 代码演示：(test_10_drawing_rectangle.py)
 
+```python
+import numpy as np
+import cv2 as cv
+
+# 创建一个黑色图框
+img = np.zeros((512,512,3), np.uint8)
+
+# 绘制一个蓝色的矩形框
+cv.rectangle(img, (100, 100), (200, 200), (255, 0, 0), -1)
+
+cv.imshow("rectangle", img)         # 显示图片
+
+cv.waitKey(0)
+
+cv.destroyAllWindows()
+```
+
+运行结果：
+![](/running_result/drawing_rectangle.png)
 
 ## 进阶篇
 
