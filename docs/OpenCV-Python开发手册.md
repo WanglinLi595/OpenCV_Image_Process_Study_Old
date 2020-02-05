@@ -23,10 +23,8 @@
 
 - OpenCV-Python是OpenCV的Python API，旨在解决计算机视觉问题的Python绑定库。
 - OpenCV-Python使用了 Numpy ，这是一个高度优化的库，用于使用 MATLAB 风格的语法进行数值运算。所有 OpenCV 数组结构都与 Numpy 数组相互转换。这也使与使用 Numpy 的其他库（例如 SciPy 和 Matplotlib ）的集成变得更加容易。
-  
-## 二. 快速入手
 
-## 三. 入门篇
+## 二. 入门篇
 
 ### 1. 构造 OpenCV-Python 开发环境
 
@@ -225,9 +223,9 @@ import numpy as np
 import cv2 as cv
 
 cap = cv.VideoCapture(0)    # 创建 VideoCapture 对象
-if not cap.isOpened():       # 相机打开失败 
+if not cap.isOpened():       # 相机打开失败
     print("相机打开失败")
-    exit()                  # 退出程序 
+    exit()                  # 退出程序
 
 while True:
     # 一帧一帧的捕获，如果正确读取帧，ret 返回 True
@@ -252,7 +250,7 @@ cv.destroyAllWindows()      # 摧毁所有创建的窗口
   
 (3) 从文件播放视频
 
-- 它与从摄像机捕获相同，只是摄像机索引更换为视频名称。在播放帧的时候，应选取适当的 cv.waitKey() 参数。如果参数过小，视频播放速度将会变得很快；参数过大，视频播放速度会变慢（这就是您可以慢动作显示视频的方式）。正常情况下25就可以了。 
+- 它与从摄像机捕获相同，只是摄像机索引更换为视频名称。在播放帧的时候，应选取适当的 cv.waitKey() 参数。如果参数过小，视频播放速度将会变得很快；参数过大，视频播放速度会变慢（这就是您可以慢动作显示视频的方式）。正常情况下25就可以了。
 - 代码演示：
 
 代码：(test_7_playing_video.py)
@@ -390,8 +388,45 @@ cv.destroyAllWindows()
 ```
 
 运行结果：
-![](/running_result/drawing_rectangle.png)
 
-## 进阶篇
+
+(5) 绘制圆形
+
+- 绘制圆形需要确定圆心点的位置和半径
+- 代码演示：(test_11_drawing_circle.py)
+
+```python
+import cv2 as cv
+import numpy as np
+
+# 创建一个黑色图框
+img = np.zeros((512,512,3), np.uint8)
+
+# 绘制一个红色的圆
+cv.circle(img, (447,63), 63, (0,0,255), -1)
+
+cv.imshow("circle", img)         # 显示图片
+
+cv.waitKey(0)
+
+cv.destroyAllWindows()
+```
+
+运行结果：
+
+(6) 绘制椭圆
+
+- 绘制椭圆的时候，我们需要一系列的参数。第一个参数是它的中心坐标。第二个参数是它的轴长( 长轴长，短轴长)
+
+### 5. 鼠标画笔
+
+(1) 目标
+
+- 学会在 Opencv 处理鼠标事件
+- 学习函数： cv.setMouseCallback()
+
+(2) 简单示例
+
+## 三. 进阶篇
 
 ## API
